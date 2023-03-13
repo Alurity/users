@@ -8,6 +8,7 @@ import { DepartmentComponent } from './department/department.component';
 
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DepartmentDataService } from './department/department-data.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 	FormsModule,
 	ReactiveFormsModule
   ],
-  providers: [SharedService],
+  providers: [{provide: DepartmentDataService, useFactory: ()=> console.log('test') }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

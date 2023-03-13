@@ -1,16 +1,17 @@
+import { environment } from './../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken, Injector } from '@angular/core';
+import { inject } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-readonly route = 'http://localhost:5171/';
+	readonly baseUrl = environment.API_URL;
+	constructor(private http: HttpClient) { }
 
-	constructor(private html: HttpClient) { }
-
-	getDepList(): Observable<any> {
-		return this.html.get<any>(this.route+'api/department');
+	getDepartmentsList(): Observable<any> {
+		return this.http.get<any>(this.baseUrl+'department');
 	}
 }

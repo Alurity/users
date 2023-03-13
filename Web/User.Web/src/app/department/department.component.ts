@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SharedService } from '../shared.service';
+import { DepartmentDataService } from './department-data.service';
 
 @UntilDestroy()
 @Component({
@@ -10,10 +11,14 @@ import { SharedService } from '../shared.service';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor(private sharedService: SharedService) { }
+	constructor(private sharedService: DepartmentDataService) { }
 
-  ngOnInit(): void {
-	this.sharedService.getDepList().pipe(untilDestroyed(this)).subscribe((result) => console.log(result));
-  }
+	ngOnInit(): void {
+		//this.sharedService.getDepartmentsList().pipe(untilDestroyed(this)).subscribe((result) => console.log(result));
+	}
+
+	loadData() {
+
+	}
 
 }
